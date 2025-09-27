@@ -33,8 +33,10 @@ rootElement?.classList.add(
     "bg-gradient-to-b",
     "from-slate-50",
     "to-slate-100",
+    "text-stone-950",
     "dark:from-zinc-900",
-    "dark:to-zinc-950"
+    "dark:to-zinc-950",
+    "dark:text-stone-50"
 );
 
 if (rootElement && !rootElement.innerHTML) {
