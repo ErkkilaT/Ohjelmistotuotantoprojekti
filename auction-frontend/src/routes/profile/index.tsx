@@ -1,7 +1,4 @@
 import AddItemForm from "@/components/AddItemForm";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { isTokenValid } from "@/lib/auth";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -22,7 +19,9 @@ function RouteComponent() {
                 localStorage.removeItem("token");
                 nav({ to: "/login" });
             }
-            setName(response.message);
+            const json = JSON.parse(response.message);
+            localStorage.setItem("user_id", json.id);
+            setName(json.username);
         })();
     }, []);
 

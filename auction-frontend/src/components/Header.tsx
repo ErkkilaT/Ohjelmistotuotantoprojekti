@@ -1,4 +1,4 @@
-import { useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { Button } from "./ui/button";
 import Icon from "./Icon";
 import DarkModeToggle from "./DarkModeToggle";
@@ -8,23 +8,26 @@ export default function Header() {
 
     return (
         <header className="border-border flex items-center justify-between border-b bg-transparent px-6 py-3">
-            <div className="flex gap-4">
+            <div className="flex items-center gap-2">
                 <Icon></Icon>
-                <Button variant={"ghost"} onClick={() => navigate({ to: "/" })}>
+                <Link
+                    className="hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 rounded-lg px-3 py-2 font-semibold transition-colors"
+                    to="/"
+                >
                     Home
-                </Button>
-                <Button
-                    variant={"ghost"}
-                    onClick={() => navigate({ to: "/auction" })}
+                </Link>
+                <Link
+                    className="hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 rounded-lg px-3 py-2 font-semibold transition-colors"
+                    to="/auction"
                 >
                     Auction
-                </Button>
-                <Button
-                    variant={"ghost"}
-                    onClick={() => navigate({ to: "/profile" })}
+                </Link>
+                <Link
+                    className="hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 rounded-lg px-3 py-2 font-semibold transition-colors"
+                    to="/profile"
                 >
                     My profile
-                </Button>
+                </Link>
             </div>
             <DarkModeToggle />
         </header>

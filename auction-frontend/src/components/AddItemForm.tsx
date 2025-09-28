@@ -13,8 +13,8 @@ export default function AddItemForm() {
     const [itemTitle, setItemTitle] = useState("");
     const [itemDesc, setItemDesc] = useState("");
     const [itemImage, setItemImage] = useState("");
-    const [startingPrice, setStartingPrice] = useState(0);
-    const [bidIncrement, setBidIncrement] = useState(0);
+    const [startingPrice, setStartingPrice] = useState(1);
+    const [bidIncrement, setBidIncrement] = useState(1);
 
     const handleAddItem = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();

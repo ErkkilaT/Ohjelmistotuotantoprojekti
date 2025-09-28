@@ -33,4 +33,9 @@ async function addItem(
         : { success: false, message: text };
 }
 
-export { addItem };
+async function getAllItems() {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/item`);
+    return await response.json();
+}
+
+export { addItem, getAllItems };
