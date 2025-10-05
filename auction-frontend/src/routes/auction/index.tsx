@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -21,6 +21,7 @@ function RouteComponent() {
     const [bidExpiry, setBidExpiry] = useState(0);
     const [countdownValue, setCountdownValue] = useState(0);
     const [myid] = useState(localStorage.getItem("user_id"));
+    const nav = useNavigate();
 
     useEffect(() => {
         if (webSocket) return;
@@ -36,7 +37,6 @@ function RouteComponent() {
                 case "current_item":
                     setActiveItem(msg.payload);
                     setCurrentPrice(msg.payload.itemPrice);
-                    console.log(msg.payload);
                     console.log(new Date(msg.payload.endAt));
                     setBidExpiry(new Date(msg.payload.endAt).getTime());
                     break;
@@ -109,7 +109,7 @@ function RouteComponent() {
 
     const handleBid = () => {
         const token = localStorage.getItem("token");
-        if (!token) return;
+        if (!token) return nav({ to: "/login" });
 
         const body = {
             subject: "bid",
@@ -129,7 +129,10 @@ function RouteComponent() {
                         <div className="flex flex-col">
                             <img
                                 className="h-48 w-full max-w-72 rounded-xl object-cover"
-                                src="https://placehold.co/550x300"
+                                src={
+                                    activeItem.itemImage ??
+                                    "https://placehold.co/550x300"
+                                }
                             ></img>
                             <h1 className="text-2xl font-medium">
                                 {activeItem.itemName}

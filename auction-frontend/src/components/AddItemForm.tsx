@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -32,6 +32,17 @@ export default function AddItemForm() {
         }
     };
 
+    const handleItemChange = async (e: ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.files) return;
+        const firstFile = e.target.files[0];
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(firstFile);
+        fileReader.onload = () => {
+            setItemImageURL(fileReader.result as string);
+            setItemImage(fileReader.result as string);
+        };
+    };
+
     return (
         <>
             <div className="grid grid-cols-2 gap-4">
@@ -49,7 +60,7 @@ export default function AddItemForm() {
                     <Input
                         type="file"
                         required
-                        onChange={(e) => console.log(e.target.value)}
+                        onChange={handleItemChange}
                     ></Input>
                     <div className="text-xl font-bold">Item Description</div>
                     <Textarea
