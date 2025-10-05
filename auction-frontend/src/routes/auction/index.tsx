@@ -36,6 +36,8 @@ function RouteComponent() {
                 case "current_item":
                     setActiveItem(msg.payload);
                     setCurrentPrice(msg.payload.itemPrice);
+                    console.log(msg.payload);
+                    console.log(new Date(msg.payload.endAt));
                     setBidExpiry(new Date(msg.payload.endAt).getTime());
                     break;
                 case "new_auction":
@@ -62,6 +64,19 @@ function RouteComponent() {
                     if (!userid || !msg.payload.winner) break;
                     if (msg.payload.winner.id == userid)
                         toast.success(`You've won ${msg.payload.itemName}`);
+                    break;
+                case "current_bids":
+                    const bids: BidEntry[] = Object.values(
+                        msg.payload.bids
+                    ).map((i: any) => ({
+                        id: i.bidderId,
+                        username: i.bidder,
+                        price: i.price,
+                    }));
+                    if (bids.length === 0) return;
+                    bids.sort((a: BidEntry, b: BidEntry) => b.price - a.price);
+                    setCurrentBids(bids);
+                    setCurrentPrice(bids[0].price);
                     break;
                 default:
                     console.log("Unknown WebSocket message: ", msg);
