@@ -92,63 +92,19 @@ function App() {
 
             <section className="bg-neutral-950 py-20">
                 <div className="container mx-auto px-6 md:px-10">
+                    <h2 className="text-3xl font-bold text-neutral-50">
+                        Auctionhouse
+                    </h2>
                     <div className="mb-10 flex items-center justify-between">
-                        <h2 className="text-3xl font-bold text-neutral-50">
-                            Upcoming items
-                        </h2>
                         <Link
                             to="/auction"
                             className="flex items-center gap-1 font-medium text-blue-400 hover:text-blue-300"
                         >
-                            View all <RiArrowRightLine />
+                            View current item <RiArrowRightLine />
                         </Link>
                     </div>
 
-                    <div className="grid gap-6 md:grid-cols-3">
-                        {[...Array(3)].map((_, i) => (
-                            <div
-                                key={i}
-                                className="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/60 transition hover:bg-neutral-900"
-                            >
-                                <img
-                                    src={`https://source.unsplash.com/600x400?gadget&sig=${i}`}
-                                    alt="lot"
-                                    className="h-56 w-full object-cover"
-                                />
-                                <div className="p-5">
-                                    <div className="flex items-start justify-between">
-                                        <div>
-                                            <h3 className="font-semibold text-neutral-100">
-                                                Lot #{(i + 1) * 342}
-                                            </h3>
-                                            <p className="text-sm text-neutral-400">
-                                                Description
-                                            </p>
-                                        </div>
-                                        <span
-                                            className={`rounded-full border px-2 py-1 text-xs ${i == 0 ? "border-green-500/20 bg-green-500/10 text-green-400" : "border-yellow-500/20 bg-yellow-500/10 text-yellow-400"}`}
-                                        >
-                                            {i == 0 ? "Live" : "Upcoming"}
-                                        </span>
-                                    </div>
-
-                                    <div className="mt-4 flex items-end justify-between">
-                                        <div>
-                                            <div className="text-xs text-neutral-500">
-                                                Current bid
-                                            </div>
-                                            <div className="text-xl font-bold text-neutral-50">
-                                                $ 2{i} 750
-                                            </div>
-                                        </div>
-                                        <button className="cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-500">
-                                            Bid now
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    <div className="grid gap-6 md:grid-cols-3"></div>
                 </div>
             </section>
         </>

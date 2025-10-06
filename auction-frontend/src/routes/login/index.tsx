@@ -58,6 +58,7 @@ function RouteComponent() {
                                     <Input
                                         id="username"
                                         type="username"
+                                        minLength={1}
                                         required
                                         onChange={(e) =>
                                             setUsername(e.target.value)
@@ -74,6 +75,7 @@ function RouteComponent() {
                                         id="password"
                                         type="password"
                                         required
+                                        minLength={1}
                                         onChange={(e) =>
                                             setPassword(e.target.value)
                                         }
