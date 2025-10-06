@@ -5,6 +5,10 @@ This project is an auction system. It provides a basic system for creating timed
 
 The repository for the required database can be found [here](https://github.com/NullByte3/AuctionBackend)
 
+You can find readymade docker images on hub.docker here : 
+[Frontend](https://hub.docker.com/repository/docker/oomis1/auction_frontend/general)
+[Backend](https://hub.docker.com/repository/docker/oomis1/auction_backend/general)
+
 Team members: Teemu Erkkilä, Mikko Varis, Wissam Al-dabbagh
 
 ---
@@ -22,6 +26,7 @@ Team members: Teemu Erkkilä, Mikko Varis, Wissam Al-dabbagh
 ## Technologies Used
 **Backend**
 - Java
+- Java hibernate framework
 - Maven
 - PostgreSQL
 - JUnit 5
