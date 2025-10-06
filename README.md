@@ -53,6 +53,14 @@ git clone https://github.com/NullByte3/AuctionBackend.git
 2. Configure the database:
    - Install PostgreSQL from [here](https://www.postgresql.org/download/)
    - create a database called auction
+    ```
+    CREATE DATABASE auction;
+    ```
+    - if you want to use the configs below also run thsese queries:
+    ```
+    CREATE USER test WITH PASSWORD 'test';
+    GRANT ALL PRIVILEGES ON DATABASE auction TO test;
+    ```
 3. Set the hibernate config
    - make a copy of hibernate.cfg.xml.template file and remove the .template
    - replace this portion with your own variables e.g.
