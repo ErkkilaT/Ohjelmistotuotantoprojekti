@@ -74,7 +74,7 @@ git clone https://github.com/ErkkilaT/Ohjelmistotuotantoprojekti.git
    - Set your api/ws url to where you set up the backend (defaults below)
    ```
    VITE_API_URL=http://localhost:7070
-   VITE_WS_URL=
+   VITE_WS_URL=ws://localhost:7070/ws/bid
    ```
 3. Install dependencies:
 ```
