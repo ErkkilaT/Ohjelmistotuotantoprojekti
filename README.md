@@ -2,7 +2,7 @@
 Ohjelmistotuotantoprojekti 1 TX00EY27-3007
 Team members: Teemu Erkkilä, Mikko Varis, Wissam Al-dabbagh
 ---
-#Features
+# Features
 - Create auctions
 - Manage auctions
 - Bid on auctions
@@ -10,7 +10,7 @@ Team members: Teemu Erkkilä, Mikko Varis, Wissam Al-dabbagh
 - View upcoming auctions
 - Register account(register,login)
 ---
-#Technologies Used
+# Technologies Used
 -Java
 -Maven
 -PostgreSQL
