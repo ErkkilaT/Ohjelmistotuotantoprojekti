@@ -94,5 +94,7 @@ npm run start
 ```
 5. Congrats the program is operational!
 
+#### Localization
 
-
+The [react-i18next](https://react.i18next.com/) library was used for setting up localization. No extra setup is required to enable localization.
+The language can be changed from the dropdown found inside the header, with the globe icon.
