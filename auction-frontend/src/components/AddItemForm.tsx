@@ -4,8 +4,10 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { addItem } from "@/lib/item";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 export default function AddItemForm() {
+    const { t } = useTranslation();
     const [itemImageURL, setItemImageURL] = useState(
         "https://placehold.co/600x400"
     );
@@ -26,9 +28,9 @@ export default function AddItemForm() {
             bidIncrement
         );
         if (response.success) {
-            toast.success(response.message);
+            toast.success(t("additemform.toast.success"));
         } else {
-            toast.error(response.message);
+            toast.error(t("additemform.toast.error"));
         }
     };
 
@@ -50,25 +52,34 @@ export default function AddItemForm() {
                     className="flex flex-col gap-1 *:max-w-96"
                     onSubmit={handleAddItem}
                 >
-                    <div className="text-xl font-bold">Item title</div>
+                    <div className="text-xl font-bold">
+                        {t("additemform.item_title")}
+                    </div>
                     <Input
-                        placeholder="Item title"
+                        placeholder={t("additemform.item_title")}
                         onChange={(e) => setItemTitle(e.target.value)}
                         required
                     ></Input>
-                    <div className="text-xl font-bold">Item Image</div>
+                    <div className="text-xl font-bold">
+                        {t("additemform.item_image")}
+                    </div>
                     <Input
+                        id="item-image"
                         type="file"
                         required
                         onChange={handleItemChange}
                     ></Input>
-                    <div className="text-xl font-bold">Item Description</div>
+                    <div className="text-xl font-bold">
+                        {t("additemform.item_description")}
+                    </div>
                     <Textarea
-                        placeholder="Add your description here"
+                        placeholder={t("additemform.item_desc_placeholder")}
                         onChange={(e) => setItemDesc(e.target.value)}
                         required
                     ></Textarea>
-                    <div className="text-xl font-bold">Starting Price</div>
+                    <div className="text-xl font-bold">
+                        {t("additemform.starting_price")}
+                    </div>
                     <Input
                         type="number"
                         step={0.01}
@@ -76,7 +87,9 @@ export default function AddItemForm() {
                         onChange={(e) => setStartingPrice(+e.target.value)}
                         required
                     ></Input>
-                    <div className="text-xl font-bold">Bid increment</div>
+                    <div className="text-xl font-bold">
+                        {t("additemform.bid_increment")}
+                    </div>
                     <Input
                         type="number"
                         step={0.01}
@@ -84,7 +97,9 @@ export default function AddItemForm() {
                         onChange={(e) => setBidIncrement(+e.target.value)}
                         required
                     ></Input>
-                    <Button className="mt-2 cursor-pointer">Add item</Button>
+                    <Button className="mt-2 cursor-pointer">
+                        {t("additemform.add_item")}
+                    </Button>
                 </form>
                 <img
                     className="h-full w-full rounded-md object-cover"

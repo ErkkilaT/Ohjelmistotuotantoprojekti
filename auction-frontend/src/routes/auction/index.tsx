@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/auction/")({
@@ -14,6 +15,8 @@ type BidEntry = {
 };
 
 function RouteComponent() {
+    const { t } = useTranslation();
+
     const [webSocket, setWebSocket] = useState<WebSocket | null>(null);
     const [activeItem, setActiveItem] = useState<Item | null>(null);
     const [currentPrice, setCurrentPrice] = useState<number | null>(null);
@@ -63,7 +66,9 @@ function RouteComponent() {
                     const userid = localStorage.getItem("user_id");
                     if (!userid || !msg.payload.winner) break;
                     if (msg.payload.winner.id == userid)
-                        toast.success(`You've won ${msg.payload.itemName}`);
+                        toast.success(
+                            `${t("auction.toast.win")} ${msg.payload.itemName}`
+                        );
                     break;
                 case "current_bids":
                     const bids: BidEntry[] = Object.values(
@@ -93,7 +98,7 @@ function RouteComponent() {
     useEffect(() => {
         const myId = localStorage.getItem("user_id");
         if (myId && currentBids.length >= 2 && currentBids[1].id === +myId)
-            toast.error("You've been outbid!");
+            toast.error(t("auction.toast.outbid"));
     }, [currentBids]);
 
     useEffect(() => {
@@ -141,14 +146,14 @@ function RouteComponent() {
                             <div className="mt-auto flex flex-col gap-2">
                                 <div>
                                     <div className="flex justify-between text-xl">
-                                        <div>Bid increments</div>
+                                        <div>{t("auction.bid_increments")}</div>
                                         <div>
                                             {activeItem.bidIncrement.toFixed(2)}
                                             $
                                         </div>
                                     </div>
                                     <div className="flex justify-between text-xl">
-                                        <div>Current bid</div>
+                                        <div>{t("auction.current_bid")}</div>
                                         <div>{currentPrice.toFixed(2)}$</div>
                                     </div>
                                 </div>
@@ -162,7 +167,7 @@ function RouteComponent() {
                                         currentBids[0].id === +myid
                                     }
                                 >
-                                    Bid{" "}
+                                    {t("auction.bid")}{" "}
                                     {(
                                         currentPrice + activeItem.bidIncrement
                                     ).toFixed(2)}
@@ -173,7 +178,7 @@ function RouteComponent() {
                         <div className="flex flex-col gap-2">
                             <div className="flex justify-between">
                                 <h2 className="text-2xl font-medium">
-                                    Live bids
+                                    {t("auction.live_bids")}
                                 </h2>
                                 <div className="text-2xl font-medium">
                                     {(countdownValue / 1000).toFixed(1)}
@@ -182,7 +187,9 @@ function RouteComponent() {
                             <div className="relative flex flex-1 flex-col overflow-y-auto rounded-md border-1 border-zinc-200 dark:border-zinc-700">
                                 <div className="absolute inset-0">
                                     {currentBids.length === 0 ? (
-                                        <p className="text-xl">No bids yet</p>
+                                        <p className="text-xl">
+                                            {t("auction.no_bids")}
+                                        </p>
                                     ) : (
                                         currentBids.map(
                                             ({ username, price }, i) => {
@@ -206,7 +213,7 @@ function RouteComponent() {
                     </>
                 ) : (
                     <div className="grid h-full w-full place-items-center text-2xl font-semibold">
-                        Waiting for items...
+                        {t("auction.waiting")}
                     </div>
                 )}
             </div>

@@ -17,6 +17,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { login } from "@/lib/auth";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 export const Route = createFileRoute("/login/")({
     beforeLoad: () => {
@@ -27,6 +28,7 @@ export const Route = createFileRoute("/login/")({
 
 function RouteComponent() {
     const nav = useNavigate();
+    const { t } = useTranslation();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -34,10 +36,10 @@ function RouteComponent() {
         const loginResponse = await login(username, password);
         if (loginResponse.success) {
             localStorage.setItem("token", loginResponse.message);
-            toast.success("Successfully logged in");
+            toast.success(t("auth.toast.login.success"));
             nav({ to: "/profile" });
         } else {
-            toast.error(loginResponse.message);
+            toast.error(t("auth.toast.login.error"));
         }
     };
 
@@ -47,14 +49,16 @@ function RouteComponent() {
                 <Card className="w-full max-w-sm">
                     <CardHeader>
                         <CardTitle className="text-center text-xl">
-                            Login
+                            {t("auth.login")}
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
                         <form>
                             <div className="flex flex-col gap-6">
                                 <div className="grid gap-2">
-                                    <Label htmlFor="email">Username</Label>
+                                    <Label htmlFor="email">
+                                        {t("auth.username")}
+                                    </Label>
                                     <Input
                                         id="username"
                                         type="username"
@@ -68,7 +72,7 @@ function RouteComponent() {
                                 <div className="grid gap-2">
                                     <div className="flex items-center">
                                         <Label htmlFor="password">
-                                            Password
+                                            {t("auth.password")}
                                         </Label>
                                     </div>
                                     <Input
@@ -86,13 +90,13 @@ function RouteComponent() {
                     </CardContent>
                     <CardFooter className="flex-col gap-2">
                         <Button className="w-full" onClick={handleLogin}>
-                            Login
+                            {t("auth.login")}
                         </Button>
                         <Link
                             to="/register"
                             className="text-left text-zinc-500 italic underline"
                         >
-                            Don't have an account? Register here
+                            {t("auth.dont_have_account")}
                         </Link>
                     </CardFooter>
                 </Card>

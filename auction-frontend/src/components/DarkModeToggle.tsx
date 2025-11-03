@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { useTranslation } from "react-i18next";
 
 export default function DarkModeToggle() {
+    const { t } = useTranslation();
     const [theme, setTheme] = useState(localStorage.getItem("theme"));
 
     const toggleTheme = () => {
@@ -19,7 +21,9 @@ export default function DarkModeToggle() {
 
     return (
         <Button onClick={toggleTheme}>
-            {theme === "dark" ? "Light" : "Dark"}
+            {theme === "dark"
+                ? t("header.theme_light")
+                : t("header.theme_dark")}
         </Button>
     );
 }

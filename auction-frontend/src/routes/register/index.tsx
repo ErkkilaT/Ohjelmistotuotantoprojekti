@@ -17,6 +17,8 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { register } from "@/lib/auth";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
+
 export const Route = createFileRoute("/register/")({
     beforeLoad: () => {
         if (localStorage.getItem("token")) throw redirect({ to: "/profile" });
@@ -25,6 +27,7 @@ export const Route = createFileRoute("/register/")({
 });
 
 function RouteComponent() {
+    const { t } = useTranslation();
     const nav = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -33,10 +36,10 @@ function RouteComponent() {
         const registerResponse = await register(username, password);
         if (registerResponse.success) {
             localStorage.setItem("token", registerResponse.message);
-            toast.success("Successfully registered");
+            toast.success(t("auth.toast.register.success"));
             nav({ to: "/profile" });
         } else {
-            toast.error(registerResponse.message);
+            toast.error(t("auth.toast.register.error"));
         }
     };
 
@@ -46,14 +49,16 @@ function RouteComponent() {
                 <Card className="w-full max-w-sm">
                     <CardHeader>
                         <CardTitle className="text-center text-xl">
-                            Register
+                            {t("auth.register")}
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
                         <form>
                             <div className="flex flex-col gap-6">
                                 <div className="grid gap-2">
-                                    <Label htmlFor="email">Username</Label>
+                                    <Label htmlFor="email">
+                                        {t("auth.username")}
+                                    </Label>
                                     <Input
                                         id="username"
                                         type="username"
@@ -67,7 +72,7 @@ function RouteComponent() {
                                 <div className="grid gap-2">
                                     <div className="flex items-center">
                                         <Label htmlFor="password">
-                                            Password
+                                            {t("auth.password")}
                                         </Label>
                                     </div>
                                     <Input
@@ -89,13 +94,13 @@ function RouteComponent() {
                             className="w-full"
                             onClick={handleRegister}
                         >
-                            Register
+                            {t("auth.register")}
                         </Button>
                         <Link
                             to="/login"
                             className="text-left text-zinc-500 italic underline"
                         >
-                            Already have an account? Login here
+                            {t("auth.already_registered")}
                         </Link>
                     </CardFooter>
                 </Card>

@@ -8,6 +8,12 @@ import { routeTree } from "./routeTree.gen";
 import "./styles.css";
 import reportWebVitals from "./reportWebVitals.ts";
 
+import "./lib/i18n.ts";
+
+const currLang = localStorage.getItem("i18nextLng");
+if (currLang && currLang === "ar") document.dir = "rtl";
+else document.dir = "ltr";
+
 // Create a new router instance
 const router = createRouter({
     routeTree,
