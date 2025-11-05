@@ -96,6 +96,8 @@ npm run start
 
 #### Localization
 
+This project supports English, Japanese and Arabic
+
 The [react-i18next](https://react.i18next.com/) library was used for setting up localization. No extra setup is required to enable localization.
 The language can be changed from the dropdown found inside the header, with the globe icon.
 
