@@ -104,3 +104,9 @@ If you are adding a language that is RTL also edit line 14 in file main.tsx to i
 ```
 if (currLang && (currLang === "ar" || currLang === [ADD LANGUAGE CODE HERE])) document.dir = "rtl";
 ```
+Also edit the Header.tsx-file to include it in the dropdown menu in the following format
+```
+<DropdownMenuItem onClick={() => changeLanguage("en")}>
+                            English
+</DropdownMenuItem>
+```
