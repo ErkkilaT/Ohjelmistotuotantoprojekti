@@ -7,7 +7,9 @@
         "start": "vite --port 3000",
         "build": "vite build",
         "serve": "vite preview",
-        "test": "vitest run"
+        "test": "vitest run",
+        "sonar": "npm run lint:json && sonar-scanner",
+        "lint": "eslint src/**/*.{ts,tsx} -f json -o eslint-report.json"
     },
     "dependencies": {
         "@radix-ui/react-dropdown-menu": "^2.1.16",
@@ -35,16 +37,22 @@
     },
     "devDependencies": {
         "@biomejs/biome": "1.9.4",
+        "@eslint/js": "^9.39.1",
         "@testing-library/dom": "^10.4.0",
         "@testing-library/react": "^16.2.0",
         "@types/node": "^20.14.10",
         "@types/react": "^19.0.8",
         "@types/react-dom": "^19.0.3",
+        "@typescript-eslint/eslint-plugin": "^8.46.4",
         "@vitejs/plugin-react": "^4.3.4",
+        "eslint": "^9.39.1",
+        "eslint-plugin-react": "^7.37.5",
         "jsdom": "^26.0.0",
         "prettier": "^3.6.2",
         "prettier-plugin-tailwindcss": "^0.6.14",
-        "typescript": "^5.7.2",
+        "sonar-scanner": "^3.1.0",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.46.4",
         "vite": "^6.3.5",
         "vitest": "^3.0.5",
         "web-vitals": "^4.2.4"
