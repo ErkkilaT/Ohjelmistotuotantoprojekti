@@ -44,63 +44,61 @@ function RouteComponent() {
     };
 
     return (
-        <>
-            <div className="grid flex-1 place-items-center">
-                <Card className="w-full max-w-sm">
-                    <CardHeader>
-                        <CardTitle className="text-center text-xl">
-                            {t("auth.login")}
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <form>
-                            <div className="flex flex-col gap-6">
-                                <div className="grid gap-2">
-                                    <Label htmlFor="email">
-                                        {t("auth.username")}
-                                    </Label>
-                                    <Input
-                                        id="username"
-                                        type="username"
-                                        minLength={1}
-                                        required
-                                        onChange={(e) =>
-                                            setUsername(e.target.value)
-                                        }
-                                    />
-                                </div>
-                                <div className="grid gap-2">
-                                    <div className="flex items-center">
-                                        <Label htmlFor="password">
-                                            {t("auth.password")}
-                                        </Label>
-                                    </div>
-                                    <Input
-                                        id="password"
-                                        type="password"
-                                        required
-                                        minLength={1}
-                                        onChange={(e) =>
-                                            setPassword(e.target.value)
-                                        }
-                                    />
-                                </div>
+        <div className="grid flex-1 place-items-center">
+            <Card className="w-full max-w-sm">
+                <CardHeader>
+                    <CardTitle className="text-center text-xl">
+                        {t("auth.login")}
+                    </CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <form>
+                        <div className="flex flex-col gap-6">
+                            <div className="grid gap-2">
+                                <Label htmlFor="email">
+                                    {t("auth.username")}
+                                </Label>
+                                <Input
+                                    id="username"
+                                    type="username"
+                                    minLength={1}
+                                    required
+                                    onChange={(e) =>
+                                        setUsername(e.target.value)
+                                    }
+                                />
                             </div>
-                        </form>
-                    </CardContent>
-                    <CardFooter className="flex-col gap-2">
-                        <Button className="w-full" onClick={handleLogin}>
-                            {t("auth.login")}
-                        </Button>
-                        <Link
-                            to="/register"
-                            className="text-left text-zinc-500 italic underline"
-                        >
-                            {t("auth.dont_have_account")}
-                        </Link>
-                    </CardFooter>
-                </Card>
-            </div>
-        </>
+                            <div className="grid gap-2">
+                                <div className="flex items-center">
+                                    <Label htmlFor="password">
+                                        {t("auth.password")}
+                                    </Label>
+                                </div>
+                                <Input
+                                    id="password"
+                                    type="password"
+                                    required
+                                    minLength={1}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
+                                />
+                            </div>
+                        </div>
+                    </form>
+                </CardContent>
+                <CardFooter className="flex-col gap-2">
+                    <Button className="w-full" onClick={handleLogin}>
+                        {t("auth.login")}
+                    </Button>
+                    <Link
+                        to="/register"
+                        className="text-left text-zinc-500 italic underline"
+                    >
+                        {t("auth.dont_have_account")}
+                    </Link>
+                </CardFooter>
+            </Card>
+        </div>
     );
 }

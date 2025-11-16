@@ -49,7 +49,7 @@ function RouteComponent() {
                     setBidExpiry(new Date(msg.payload.endAt).getTime());
                     setCurrentBids([]);
                     break;
-                case "price_update":
+                case "price_update": {
                     const bidEntry = {
                         id: msg.payload.bidderId,
                         username: msg.payload.bidder,
@@ -58,10 +58,11 @@ function RouteComponent() {
                     setCurrentPrice(bidEntry.price);
                     setCurrentBids((p) => [bidEntry, ...p]);
                     break;
+                }
                 case "timer_update":
                     setBidExpiry(new Date(msg.payload).getTime());
                     break;
-                case "auction_end":
+                case "auction_end": {
                     setActiveItem(null);
                     const userid = localStorage.getItem("user_id");
                     if (!userid || !msg.payload.winner) break;
@@ -70,7 +71,8 @@ function RouteComponent() {
                             `${t("auction.toast.win")} ${msg.payload.itemName}`
                         );
                     break;
-                case "current_bids":
+                }
+                case "current_bids": {
                     const bids: BidEntry[] = Object.values(
                         msg.payload.bids
                     ).map((i: any) => ({
@@ -83,6 +85,7 @@ function RouteComponent() {
                     setCurrentBids(bids);
                     setCurrentPrice(bids[0].price);
                     break;
+                }
                 default:
                     console.log("Unknown WebSocket message: ", msg);
             }
@@ -138,6 +141,7 @@ function RouteComponent() {
                                     activeItem.itemImage ??
                                     "https://placehold.co/550x300"
                                 }
+                                alt={activeItem.itemName}
                             ></img>
                             <h1 className="text-2xl font-medium">
                                 {activeItem.itemName}
@@ -192,11 +196,11 @@ function RouteComponent() {
                                         </p>
                                     ) : (
                                         currentBids.map(
-                                            ({ username, price }, i) => {
+                                            ({ id, username, price }) => {
                                                 return (
                                                     <div
                                                         className="flex w-full justify-between border p-2"
-                                                        key={i}
+                                                        key={id}
                                                     >
                                                         <div>{username}</div>
                                                         <div>

@@ -276,5 +276,3 @@ i18n.use(LanguageDetector)
             },
         },
     });
-
-export default i18n;

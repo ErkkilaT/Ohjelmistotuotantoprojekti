@@ -46,66 +46,65 @@ export default function AddItemForm() {
     };
 
     return (
-        <>
-            <div className="grid grid-cols-2 gap-4">
-                <form
-                    className="flex flex-col gap-1 *:max-w-96"
-                    onSubmit={handleAddItem}
-                >
-                    <div className="text-xl font-bold">
-                        {t("additemform.item_title")}
-                    </div>
-                    <Input
-                        placeholder={t("additemform.item_title")}
-                        onChange={(e) => setItemTitle(e.target.value)}
-                        required
-                    ></Input>
-                    <div className="text-xl font-bold">
-                        {t("additemform.item_image")}
-                    </div>
-                    <Input
-                        id="item-image"
-                        type="file"
-                        required
-                        onChange={handleItemChange}
-                    ></Input>
-                    <div className="text-xl font-bold">
-                        {t("additemform.item_description")}
-                    </div>
-                    <Textarea
-                        placeholder={t("additemform.item_desc_placeholder")}
-                        onChange={(e) => setItemDesc(e.target.value)}
-                        required
-                    ></Textarea>
-                    <div className="text-xl font-bold">
-                        {t("additemform.starting_price")}
-                    </div>
-                    <Input
-                        type="number"
-                        step={0.01}
-                        defaultValue={1}
-                        onChange={(e) => setStartingPrice(+e.target.value)}
-                        required
-                    ></Input>
-                    <div className="text-xl font-bold">
-                        {t("additemform.bid_increment")}
-                    </div>
-                    <Input
-                        type="number"
-                        step={0.01}
-                        defaultValue={1}
-                        onChange={(e) => setBidIncrement(+e.target.value)}
-                        required
-                    ></Input>
-                    <Button className="mt-2 cursor-pointer">
-                        {t("additemform.add_item")}
-                    </Button>
-                </form>
-                <img
-                    className="h-full w-full rounded-md object-cover"
-                    src={itemImageURL}
-                />
-            </div>
-        </>
+        <div className="grid grid-cols-2 gap-4">
+            <form
+                className="flex flex-col gap-1 *:max-w-96"
+                onSubmit={handleAddItem}
+            >
+                <div className="text-xl font-bold">
+                    {t("additemform.item_title")}
+                </div>
+                <Input
+                    placeholder={t("additemform.item_title")}
+                    onChange={(e) => setItemTitle(e.target.value)}
+                    required
+                ></Input>
+                <div className="text-xl font-bold">
+                    {t("additemform.item_image")}
+                </div>
+                <Input
+                    id="item-image"
+                    type="file"
+                    required
+                    onChange={handleItemChange}
+                ></Input>
+                <div className="text-xl font-bold">
+                    {t("additemform.item_description")}
+                </div>
+                <Textarea
+                    placeholder={t("additemform.item_desc_placeholder")}
+                    onChange={(e) => setItemDesc(e.target.value)}
+                    required
+                ></Textarea>
+                <div className="text-xl font-bold">
+                    {t("additemform.starting_price")}
+                </div>
+                <Input
+                    type="number"
+                    step={0.01}
+                    defaultValue={1}
+                    onChange={(e) => setStartingPrice(+e.target.value)}
+                    required
+                ></Input>
+                <div className="text-xl font-bold">
+                    {t("additemform.bid_increment")}
+                </div>
+                <Input
+                    type="number"
+                    step={0.01}
+                    defaultValue={1}
+                    onChange={(e) => setBidIncrement(+e.target.value)}
+                    required
+                ></Input>
+                <Button className="mt-2 cursor-pointer">
+                    {t("additemform.add_item")}
+                </Button>
+            </form>
+            <img
+                className="h-full w-full rounded-md object-cover"
+                src={itemImageURL}
+                alt="Item"
+            />
+        </div>
     );
 }

@@ -15,7 +15,8 @@ export default function DarkModeToggle() {
             "dark",
             localStorage.theme === "dark" ||
                 (!("theme" in localStorage) &&
-                    window.matchMedia("(prefers-color-scheme: dark)").matches)
+                    globalThis.matchMedia("(prefers-color-scheme: dark)")
+                        .matches)
         );
     };
 
