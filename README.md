@@ -94,5 +94,23 @@ npm run start
 ```
 5. Congrats the program is operational!
 
+#### Localization
 
+This project supports English, Japanese and Arabic
+
+The [react-i18next](https://react.i18next.com/) library was used for setting up localization. No extra setup is required to enable localization.
+The language can be changed from the dropdown found inside the header, with the globe icon.
+
+If you would like to add languages add the translations into the i18n.ts-file in the lib-folder (see template in the i18n.ts-file).
+Also edit the Header.tsx-file to include it in the dropdown menu in the following format
+```
+<DropdownMenuItem onClick={() => changeLanguage("en")}>
+                            English
+</DropdownMenuItem>
+```
+
+If you are adding a language that is RTL also edit line 14 in file main.tsx to include the language code that you used in the i18n.ts-file
+```
+if (currLang && (currLang === "ar" || currLang === [ADD LANGUAGE CODE HERE])) document.dir = "rtl";
+```
 
