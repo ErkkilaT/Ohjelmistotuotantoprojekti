@@ -47,6 +47,7 @@ i18n.use(LanguageDetector)
                         profile: "My profile",
                         theme_dark: "Dark",
                         theme_light: "Light",
+                        support: "Support",
                     },
                     auth: {
                         login: "Login",
@@ -97,6 +98,9 @@ i18n.use(LanguageDetector)
                             error: "Failed to add item.",
                         },
                     },
+                    support: {
+                        faq: "FAQ",
+                    },
                 },
             },
             ja: {
@@ -135,6 +139,7 @@ i18n.use(LanguageDetector)
                         profile: "マイページ",
                         theme_dark: "ダーク",
                         theme_light: "ライト",
+                        support: "サポート",
                     },
                     auth: {
                         login: "ログイン",
@@ -185,6 +190,9 @@ i18n.use(LanguageDetector)
                             error: "アイテムの追加に失敗しました。",
                         },
                     },
+                    support: {
+                        faq: "よくある質問",
+                    },
                 },
             },
 
@@ -224,6 +232,7 @@ i18n.use(LanguageDetector)
                         profile: "ملفي الشخصي",
                         theme_dark: "داكن",
                         theme_light: "فاتح",
+                        support: "دعم",
                     },
                     auth: {
                         login: "تسجيل الدخول",
@@ -271,6 +280,9 @@ i18n.use(LanguageDetector)
                             success: "تمت إضافة العنصر بنجاح!",
                             error: "فشل في إضافة العنصر.",
                         },
+                    },
+                    support: {
+                        faq: "الأسئلة الشائعة",
                     },
                 },
             },

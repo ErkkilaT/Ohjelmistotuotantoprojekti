@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SupportIndexRouteImport } from './routes/support/index'
 import { Route as RegisterIndexRouteImport } from './routes/register/index'
 import { Route as ProfileIndexRouteImport } from './routes/profile/index'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
@@ -18,6 +19,11 @@ import { Route as AuctionIndexRouteImport } from './routes/auction/index'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportIndexRoute = SupportIndexRouteImport.update({
+  id: '/support/',
+  path: '/support/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterIndexRoute = RegisterIndexRouteImport.update({
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginIndexRoute
   '/profile': typeof ProfileIndexRoute
   '/register': typeof RegisterIndexRoute
+  '/support': typeof SupportIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginIndexRoute
   '/profile': typeof ProfileIndexRoute
   '/register': typeof RegisterIndexRoute
+  '/support': typeof SupportIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,21 @@ export interface FileRoutesById {
   '/login/': typeof LoginIndexRoute
   '/profile/': typeof ProfileIndexRoute
   '/register/': typeof RegisterIndexRoute
+  '/support/': typeof SupportIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auction' | '/login' | '/profile' | '/register'
+  fullPaths: '/' | '/auction' | '/login' | '/profile' | '/register' | '/support'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auction' | '/login' | '/profile' | '/register'
-  id: '__root__' | '/' | '/auction/' | '/login/' | '/profile/' | '/register/'
+  to: '/' | '/auction' | '/login' | '/profile' | '/register' | '/support'
+  id:
+    | '__root__'
+    | '/'
+    | '/auction/'
+    | '/login/'
+    | '/profile/'
+    | '/register/'
+    | '/support/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +93,7 @@ export interface RootRouteChildren {
   LoginIndexRoute: typeof LoginIndexRoute
   ProfileIndexRoute: typeof ProfileIndexRoute
   RegisterIndexRoute: typeof RegisterIndexRoute
+  SupportIndexRoute: typeof SupportIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -86,6 +103,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support/': {
+      id: '/support/'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register/': {
@@ -125,6 +149,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginIndexRoute: LoginIndexRoute,
   ProfileIndexRoute: ProfileIndexRoute,
   RegisterIndexRoute: RegisterIndexRoute,
+  SupportIndexRoute: SupportIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

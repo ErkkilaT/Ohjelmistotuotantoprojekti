@@ -40,6 +40,12 @@ export default function Header() {
                 >
                     {t("header.profile")}
                 </Link>
+                <Link
+                    className="hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 rounded-lg px-3 py-2 font-semibold transition-colors"
+                    to="/support"
+                >
+                    {t("header.support")}
+                </Link>
             </div>
             <div className="flex gap-4">
                 <DropdownMenu>
